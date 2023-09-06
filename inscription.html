@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+    <style>
+        body{
+            background-color: bisque;
+        }
+        #titre{
+            text-align: center;
+        }
+       #tabSup{
+        caption-side: top;
+           margin-left: 20px;
+       }
+       
+       
+        table{
+             border-collapse: collapse;
+             display:inline-block
+        }
+      th,td{
+            border: solid blue 1px;
+            padding: 10px;
+            vertical-align:middle;
+            height: 10px; height: 10px;
+           
+        }
+        form{
+            display: flex;
+            flex-flow: column wrap;
+            justify-content:center;
+            align-items: start;
+            gap: 10px;
+        }
+        .impair{
+            background-color: aquamarine;
+            
+        }
+        .pair{
+            background-color: rgb(82, 215, 102);
+
+        }
+
+    </style>
+</head>
+<body>
+    <h1 id="titre">Page d'inscription</h1>
+   <form action="">
+ 
+     
+   </form>
+  <table id="tab">
+    <caption>Table des étudiant</caption>
+    <tr>
+        <th><input type="text" name="" id="nom" placeholder="nom"></th>
+        <th>     <input type="text" name="" id="prenom" placeholder="prenom">
+        </th>
+        <th>     <input type="text" name="" id="postnom" placeholder="postnom">
+        </th>
+        <th>     <input type="number" name="age" id="age" placeholder="Age">
+        </th>
+        <th><input type="button" value="enregistrer" onclick="enregistrer()"></th>
+    </tr>
+
+    
+  </table>
+  <table id="tabSup">
+    <caption>Table Corbeille</caption>
+
+    <tr>
+        <th id="th">Nom</th>
+        <th id="th">Prenom</th>
+        <th id="th">postnom</th>
+        <th id="th">Age</th>
+        <th id="th">action</th>
+    </tr>
+
+    
+  </table>
+
+    <script>
+        function _(tang){
+            return document.querySelector(tang);
+        }
+        function td(){
+            return document.createElement('td');
+        }
+        function enregistrer(){
+            // Recuperation des valeurs
+         let nom=   _('#nom').value;
+         let postnom= _('#postnom').value;
+         let prenom= _('#prenom').value;
+         let age= _('#age').value;
+       
+         let tr=document.createElement('tr');
+         enreg([nom,prenom,postnom,age,'sup'],tr)
+         let tab=_('#tab');
+          let N_enf= tab.childNodes.length;
+          tr.className= N_enf%2==0? 'pair':'impair'
+          tab.appendChild(tr)
+         
+        }
+       function enreg(tab,tr){
+         for(let element of tab){
+         let tdN=td()
+         tr.appendChild(tdN)
+         tdN.innerHTML=element;
+        }
+       }
+       var tab = document.querySelector('#tab')
+       tab.addEventListener('click',(e)=>{
+           // alert(e.target.parentNode.innerHTML)
+           if(e.target.innerHTML=='sup'){
+              if(confirm('voulez vous supprimer l étudiant '+e.target.parentNode.firstElementChild.innerHTML)){
+                let element=e.target.parentNode;
+                let sup=tab.removeChild(element)
+                sup.lastElementChild.innerHTML='Reset'
+               document.querySelector('#tabSup').appendChild(sup)
+              }
+           }
+   
+           
+       })
+       var tabSup=document.getElementById("tabSup")
+       tabSup.addEventListener('click',(e)=>{
+           // alert(e.target.parentNode.innerHTML)
+           if(e.target.innerHTML=='Reset'){
+            if(confirm('voulez vous Remettre l\'etudiant dans la liste ' +e.target.parentNode.firstElementChild.innerHTML)){
+              let element=e.target.parentNode;
+              let sup=tabSup.removeChild(element)
+              sup.lastElementChild.innerHTML='sup'
+             document.querySelector('#tab').appendChild(sup)
+            }
+         }
+   
+           
+       })
+    </script>
+    
+</body>
+</html>
