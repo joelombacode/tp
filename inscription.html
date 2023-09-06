@@ -5,9 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>javascript</title>
-    <style>
+   <style>
         body{
             background-color: bisque;
+            display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        align-items: center;
         }
         #titre{
             text-align: center;
@@ -26,7 +30,8 @@
             border: solid blue 1px;
             padding: 10px;
             vertical-align:middle;
-            height: 10px; height: 10px;
+            height: 10px; 
+            
            
         }
         form{
@@ -50,20 +55,34 @@
 <body>
     <h1 id="titre">Page d'inscription</h1>
    <form action="">
- 
-     
-   </form>
+    <input type="text" name="" id="nom" placeholder="nom"><br>
+    <input type="text" name="" id="prenom" placeholder="prenom"><br>
+    <input type="text" name="" id="postnom" placeholder="postnom"><br>
+    <input type="number" name="age" id="age" placeholder="Age"><br>
+</form>
+<input type="button" value="enregistrer" onclick="enregistrer()">
   <table id="tab">
     <caption>Table des étudiant</caption>
     <tr>
-        <th><input type="text" name="" id="nom" placeholder="nom"></th>
-        <th>     <input type="text" name="" id="prenom" placeholder="prenom">
-        </th>
-        <th>     <input type="text" name="" id="postnom" placeholder="postnom">
-        </th>
-        <th>     <input type="number" name="age" id="age" placeholder="Age">
-        </th>
-        <th><input type="button" value="enregistrer" onclick="enregistrer()"></th>
+        <th id="th">Nom</th>
+        <th id="th">Prenom</th>
+        <th id="th">postnom</th>
+        <th id="th">Age</th>
+        <th id="th">action</th>
+    </tr>
+
+    
+  </table>
+  <br>
+  <table id="tabSup">
+    <caption>Table Corbeille</caption>
+
+    <tr>
+        <th id="th">Nom</th>
+        <th id="th">Prenom</th>
+        <th id="th">postnom</th>
+        <th id="th">Age</th>
+        <th id="th">action</th>
     </tr>
 
     
